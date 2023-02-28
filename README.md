@@ -2,15 +2,15 @@
 
 ### Prerequisites
 
-[NodeJs](https://nodejs.org) `>= 18.12.1`
+[NodeJs](https://nodejs.org) `>= 18.14.2`
 
-[npmjs](https://www.npmjs.com/) `>= 8.19.3`
+[npmjs](https://www.npmjs.com/) `>= 9.5.1`
 
-[nodemon](https://nodemon.io/) `>= 2.0.0`
+[nodemon](https://nodemon.io/) `>= 2.0.12`
 
-[git](https://git-scm.com/downloads) `>= 2.24.0`
+[git](https://git-scm.com/downloads) `>= 2.37.1`
 
-[mongodb](https://www.mongodb.com) `>= 5.0`
+[mongodb](https://www.mongodb.com) `>= 4.0`
 
 ## Installing / Getting started
 
@@ -115,4 +115,4 @@ _How:_
 
 ## Database
 
-- [MongoDB](https://www.mongodb.com) - version 5.0 and above
+- [MongoDB](https://www.mongodb.com) - version 4.0 and above

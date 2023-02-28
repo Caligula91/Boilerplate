@@ -17,8 +17,6 @@ const { name } = require('./package.json');
 const port = environments.PORT;
 const appURL = `http://localhost:${port}/api/v1/`;
 
-mongoose.Promise = global.Promise;
-
 const app = express();
 
 // Application Routes
@@ -47,7 +45,7 @@ app.use(expressjwt({ secret: environments.JWT_SECRET, algorithms: ['HS256'] }).u
   ],
 }));
 
-mongoose.set('strictQuery', false);
+app.use('/api/v1', UserRoutes);
 
 // Create the database connection
 mongoose.connect(mongoDB.connectionString());
@@ -56,31 +54,24 @@ mongoose.connection.on('connected', () => {
   console.log(`Mongoose default connection open to ${mongoDB.connectionString()}`);
 });
 
-// CONNECTION EVENTS
-// If the connection throws an error
 mongoose.connection.on('error', (err) => {
   console.log(`Mongoose default connection error: ${err}`);
 });
 
-// When the connection is disconnected
 mongoose.connection.on('disconnected', () => {
   console.log('Mongoose default connection disconnected');
 });
 
-// When the connection is open
 mongoose.connection.on('open', () => {
   console.log('Mongoose default connection is open');
 });
 
-// If the Node process ends, close the Mongoose connection
 process.on('SIGINT', () => {
-  mongoose.connection.close(() => {
-    console.log('Mongoose default connection disconnected through app termination');
-    process.exit(0);
-  });
+  mongoose.connection.close()
+    .then(() => console.log('Mongoose default connection disconnected through app termination'))
+    .catch((err) => console.log(err))
+    .finally(() => process.exit(0));
 });
-
-app.use('/api/v1', UserRoutes);
 
 if (environments.NODE_ENV === 'development') {
   // eslint-disable-next-line import/no-extraneous-dependencies
