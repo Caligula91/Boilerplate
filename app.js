@@ -1,5 +1,6 @@
 /* eslint-disable global-require */
 /* eslint-disable no-console */
+const path = require('path');
 const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -8,7 +9,6 @@ const { expressjwt } = require('express-jwt');
 const mongoose = require('mongoose');
 const mongoSanitize = require('express-mongo-sanitize');
 const lusca = require('lusca');
-const path = require('path');
 const ErrorHandler = require('./middlewares/errorHandling/errorHandler');
 const mongoDB = require('./config/database/mongodb/connection');
 const environments = require('./config/environments');

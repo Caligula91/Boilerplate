@@ -11,7 +11,7 @@ const { issueNewToken } = require('../../lib/jwtHandler');
  * @returns {Promise} returns new user
  */
 const createUser = async ({
-  name = `${faker.name.firstName()} ${faker.name.firstName()}`,
+  name = `${faker.person.firstName()} ${faker.person.firstName()}`,
   email = faker.internet.email(),
   password = faker.internet.password(),
   isActive = true,
@@ -40,7 +40,7 @@ const createManyUsers = async (numberOfUsers) => {
   let users = [];
   for (let i = 0; i < numberOfUsers; i += 1) {
     users.push({
-      name: `${faker.name.firstName()} ${faker.name.lastName()}`,
+      name: `${faker.person.firstName()} ${faker.person.lastName()}`,
       email: faker.internet.email(),
       password: faker.internet.password(),
       isActive: true,
