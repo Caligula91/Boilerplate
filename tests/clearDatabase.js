@@ -1,19 +1,11 @@
 const mongoose = require('mongoose');
 const { before, after } = require('mocha');
-const mongoDB = require('../config/database/mongodb/connection');
 
-before((done) => {
-  mongoose.connect(mongoDB.connectionString());
-
-  mongoose.connection.once('open', () => {
-    mongoose.connection.db.dropDatabase()
-      .catch((err) => console.log(err))
-      .finally(() => done());
-  });
-
+before(() => {
   process.on('SIGINT', () => {
     try {
       mongoose.connection.db.dropDatabase()
+        .then(() => console.log('MongoDB collections dropped'))
         .catch((err) => console.log(err))
         .finally(() => {
           mongoose.connection.close()
