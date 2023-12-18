@@ -277,3 +277,7 @@ module.exports.refreshToken = async (req, res) => {
 module.exports.con = async (req, res) => {
   console.log('neki stirng');
 };
+
+module.exports.con_dva = async (req, res) => {
+  console.log('jos neki stirng');
+};
