@@ -273,3 +273,7 @@ module.exports.refreshToken = async (req, res) => {
     token: issueNewToken(user),
   });
 };
+
+module.exports.con = async (req, res) => {
+  console.log('neki stirng');
+};
